@@ -24,12 +24,13 @@ function getNewsAPI(){
                 var description = response.articles[i].description;
                 var newsURL = response.articles[i].url;
 
-                console.log("the title is "+title);
+                //console.log("the title is "+title);
 
 
 
                  var headlines = $("<a>").text(title);
                      headlines.attr("href",newsURL);
+                     headlines.attr( "target",'_blank');
                  var description = $("<p>").text(description);
                      description.css("font-size","10px");
 
