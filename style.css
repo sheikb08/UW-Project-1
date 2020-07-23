@@ -1,0 +1,23 @@
+.ui.huge.header {
+    font-family: 'Bungee Shade', cursive;
+    color: rgb(124, 7, 7);
+}
+.item {
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.ui.grid {
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.column {
+    float: left;
+  }
+  
+  .left, .right {
+    width: 25%;
+  }
+  
+  .middle {
+    width: 50%;
+  }
