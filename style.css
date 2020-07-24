@@ -64,3 +64,7 @@ body::before {
         width:100%;
     margin:8% auto;
           }
+          .ui.search {
+            float: right;
+          }
+        
