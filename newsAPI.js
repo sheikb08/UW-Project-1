@@ -18,7 +18,7 @@ function getNewsAPI(){
         method: "GET"
         }).then(function(response) {
 
-            for(var i = 0; i < 5; i++){
+            for(var i = 0; i < 10; i++){
                 var newsDiv = $("<div class='news-block'>");
                     newsDiv.css("box-shadow","0 4px 8px 0 rgba(0,0,0,0.2)");
                     newsDiv.css("transition","0.3s");
@@ -54,7 +54,12 @@ function getNewsAPI(){
         });
 }
 
+
+
 $(document).ready(function(){
     getNewsAPI();
-
+   
 });
+
+
+
