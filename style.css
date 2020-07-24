@@ -59,3 +59,8 @@ body::before {
     background-color: DarkSalmon;
     color: white;
   }
+  footer{
+    border-top:solid #2EAF7D 2px;
+        width:100%;
+    margin:8% auto;
+          }
