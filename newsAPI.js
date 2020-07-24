@@ -19,28 +19,22 @@ function getNewsAPI(){
         }).then(function(response) {
 
             for(var i = 0; i < 10; i++){
-                var newsDiv = $("<div class='news-block'>");
-                    newsDiv.css("box-shadow","0 4px 8px 0 rgba(0,0,0,0.2)");
-                    newsDiv.css("transition","0.3s");
-                    newsDiv.css("border-radius", "5px");
-                    newsDiv.css("padding-top","10px");
-                    newsDiv.css("margin-bottom","20px");
-                    newsDiv.css("background-color","#C5E3FD");
+                var newsDiv = $("<div>").addClass("ui card violet");
+                    newsDiv.css("margin-left","20px");
+
                 var title = response.articles[i].title;
                 var description = response.articles[i].description;
                 var newsURL = response.articles[i].url;
-                var blockContainer = $("<div class='container'>")
-                    blockContainer.css("padding","2px 16px");
-
-                //console.log("the title is "+title);
+                var blockContainer = $("<div>").addClass("content");
+                console.log("the title is "+title);
 
 
 
-                 var headlines = $("<a>").text(title);
+                 var headlines = $("<a>").addClass("header").text(title);
                      headlines.attr("href",newsURL);
                      headlines.attr( "target",'_blank');
-                 var description = $("<p>").text(description);
-                     description.css("font-size","10px");
+                 var description = $("<div>").addClass("description").text(description);
+
 
                 
                 blockContainer.append(headlines);
