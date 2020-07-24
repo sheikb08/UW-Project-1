@@ -53,18 +53,15 @@ body::before {
   
 
   }
-  .footer {
-    text-align: center;
-    padding: 3px;
-    background-color: DarkSalmon;
-    color: white;
-  }
-  footer{
+
+  footer {
     border-top:solid #2EAF7D 2px;
         width:100%;
     margin:8% auto;
+    text-align: center;
           }
-          .ui.search {
+  
+  .ui.search {
             float: right;
           }
         
