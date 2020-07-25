@@ -1,0 +1,67 @@
+.ui.huge.header {
+    font-family: 'Bungee Shade', cursive;
+    color: #c1F6ed;
+    font-size: xx-large;
+    content:"";
+  
+}
+
+.ui.sizer.segment {
+  background-color: transparent;
+}
+
+.item {
+    font-family: 'Courier New', Courier, monospace;
+}
+body {
+  position: relative; 
+  height: 100vh;
+  width: 100%;
+  background-image: url('https://uhdwallpapers.org/uploads/converted/19/02/24/os-galaxy-s10-1920x1200_949745-mm-90.jpg');
+  background-size: cover;
+}
+
+body::before {
+  content: "";
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  background-color: rgba(0,0,0,0.70);
+}
+
+
+.ui.grid {
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.column {
+    float: left;
+  }
+  
+  .left, .right {
+    width: 25%;
+  }
+  
+  .middle {
+    width: 50%;
+  }
+
+  .ui.vertical.pointing.menu.fluid {
+    background-color:#2eaf7d;
+  
+
+  }
+
+  footer {
+    border-top:solid #2EAF7D 2px;
+        width:100%;
+    margin:8% auto;
+    text-align: center;
+          }
+  
+  .ui.search {
+            float: right;
+          }
+        
