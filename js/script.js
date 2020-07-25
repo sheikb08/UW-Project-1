@@ -73,10 +73,9 @@ function loadUsersWeatherData(latitude,longitude){
 }
 
 
-
 function getNewsAPI(inputTopic){
-
-    var country = "us";//hard code for now
+    //console.log("i am called and the inputTopic is " + inputTopic);
+    var country = "us";//hardcoded for now
     var topic = inputTopic;
     //var topic = "tech";
 
@@ -124,10 +123,50 @@ function getNewsAPI(inputTopic){
         });
 }
 
+function factCheckedNews(){
+    
+
+    var settings = {
+        "async": true,
+        "crossDomain": true,
+        "url": "https://api-hoaxy.p.rapidapi.com/top-articles?most_recent=false&exclude_tags=%255B%2522satire%2522%255D",
+        "method": "GET",
+        "headers": {
+            "x-rapidapi-host": "api-hoaxy.p.rapidapi.com",
+            "x-rapidapi-key": "d50bb86e14msh20481094a932c3bp157a8fjsn33cf930ef98d"
+        }
+    }
+    
+    $.ajax(settings).done(function (response) {
+        console.log(response);
+    });
+
+}
+
+function clearNewsBlock(){
+    console.log("claering");
+    $("#newsDiv").empty();
+}
+
 
 $(document).ready(function(){
 
     fetchLocationFromIPGeolocationAPI();  
-    getNewsAPI();
+    var passingTopic = "world";
+    getNewsAPI(passingTopic);//news to display when user first open the page
+
+    $(document).on("click", ".item", function(event){
+        clearNewsBlock();
+        console.log("i am clicked");
+        var inputTopic = $(this).attr("data-category");
+        console.log("inputTopic is "+ inputTopic);
+            if(inputTopic !== "factChecked"){
+                getNewsAPI(inputTopic);   
+            }
+            else if(inputTopic === "factChecked"){
+                factCheckedNews();
+            }
+  
+       });
 
 });
