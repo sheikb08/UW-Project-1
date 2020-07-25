@@ -75,8 +75,8 @@ function loadUsersWeatherData(latitude,longitude){
 
 
 function getNewsAPI(inputTopic){
-
-    var country = "us";//hard code for now
+    //console.log("i am called and the inputTopic is " + inputTopic);
+    var country = "us";//hardcoded for now
     var topic = inputTopic;
     //var topic = "tech";
 
@@ -124,10 +124,23 @@ function getNewsAPI(inputTopic){
         });
 }
 
+function clearNewsBlock(){
+    console.log("claering");
+    $("#newsDiv").empty();
+}
+
 
 $(document).ready(function(){
 
     fetchLocationFromIPGeolocationAPI();  
     getNewsAPI();
+
+    $(document).on("click", ".item", function(event){
+        clearNewsBlock();
+        console.log("i am clicked");
+        var inputTopic = $(this).attr("data-category");
+        console.log("inputTopic is "+ inputTopic);
+        getNewsAPI(inputTopic);        
+       });
 
 });
