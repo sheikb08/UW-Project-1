@@ -57,7 +57,7 @@ function loadUsersWeatherData(latitude,longitude){
 
         var imageIcon = $("<img>").attr("src", "https://openweathermap.org/img/wn/" + response.weather[0].icon.toString() + ".png");
 
-        var card = $("<div>").addClass("ui card violet");
+        var card = $("<div>").addClass("ui fluid card violet");
         var content = $("<div>").addClass("content");
         var dateDiv = $("<div>").addClass("header").text(date);
         var weather = $("<div>").addClass("header");
