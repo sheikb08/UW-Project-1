@@ -9,8 +9,6 @@
     
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
 
-    <title>Newsletter made EZ</title>
-
     <!-- Sematic ui css -->
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
 
@@ -26,11 +24,11 @@
 </head>
 
 <body>
-<div class="row">
-    <div class="ui sizer segment">
-      <div class="eight wide column">
-        <div class="ui huge header">Newsletter Made EZ <i class="newspaper icon"></i> </div>    
-</div>
+        <div class="row">
+            <div class="ui sizer segment">
+              <div class="eight wide column">
+                <div class="ui huge header">Newsletter Made EZ <i class="newspaper icon"></i> </div>    
+        </div>
         <!-- We cabn use any of tree -->
         <!-- <div class="item">
             <div class="ui icon input">
@@ -45,16 +43,16 @@
             </button>
         </div> -->
       <p>
-      <div class="field">
-                <div class="ui search">
-                    <div class="ui icon input">
-                        <input class="prompt" type="text" placeholder="Search countries...">
-                        <i class="search icon"></i>
+          <div class="field">
+                    <div class="ui search">
+                        <div class="ui icon input">
+                            <input class="prompt" type="text" placeholder="Search topic...">
+                            <i class="search icon"></i>
+                        </div>
                     </div>
-                </div>
-        </div>
-    </div> 
-<p>
+              </div>
+          </div> 
+     <p>
     <div class="ui grid">
         <div class="row">
             <div class="three wide column">
@@ -85,60 +83,31 @@
                     </a>
                   </div>
             </div>
-            <div class="ten wide column">
+            
+          <div class="ten wide column">
                 
-                <!-- we can create a div ho hold our news here -->
-                <div class="ui fluid card">
-                    <div class="image">
-                      <i class="newspaper outline icon"></i>
-                    </div>
-                    <div class="content">
-                      <a class="header">Top Headline</a>
-                      <div class="meta">
-                        <span class="date">Date</span>
-                      </div>
-                      <div class="description">
-                        Breaking News Breaking News Breaking News
-                      </div>
-                    </div>
-                    <div class="extra content">
-                      <a>
-                        <i class="user icon"></i>
-                        22 views
-                      </a>
-                    </div>
-                  </div>
+                
+                <!-- <i class="newspaper outline icon"></i> -->
+            
+                <!--div ho hold our news here -->
+                <div id = "newsDiv">
+                  
+                </div>
 
             </div>
-            <div class="three wide column">
+            
+          <div class="three wide column">
                 
                 <!-- This is weather part -->
-                <div class="ui fluid card">
-                    <div class="image">
-                    </div>
-                    <div class="content">
-                      <i class="sun icon"></i>
-                      <a class="header">Weather</a>
-                      <div class="meta">
-                        <span class="date">Current Date</span>
-                      </div>
-                      <div class="description">
-                        Weather in your area
-                      </div>
-                    </div>
-                    <div class="extra content">
-            
-            
-                    </div>
-                    
-                  </div>
+                <div id = "weatherinfo"></div>
+                
 
-            </div>
+           </div>
             
         </div>
         <footer>
-          <p>2020 Best Group Ever &copy;<br>
-          <a href="mailto:group3@example.com">group3@example.com</a></p>
+            <p>2020 Best Group Ever &copy;<br>
+            <a href="mailto:group3@example.com">group3@example.com</a></p>
         </footer>  
 
     <!-- Moment.js file -->
