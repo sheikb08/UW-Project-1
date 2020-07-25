@@ -125,10 +125,19 @@ function getNewsAPI(inputTopic){
 
 function searchTopic(){
 
+    $("#newsDiv").empty();
+    
+    var topic = $("#search-topic-input").val().trim();
+    console.log("Search Topic : "+topic);
+
+    if(topic === ""){
+        return;
+    }
+
     var settings = {
         "async": true,
         "crossDomain": true,
-        "url": "https://newscatcher.p.rapidapi.com/v1/search?media=True&sort_by=relevancy&lang=en&page=1&q=Elon%20Musk",
+        "url": "https://newscatcher.p.rapidapi.com/v1/search?media=True&sort_by=relevancy&lang=en&page=1&q="+topic,
         "method": "GET",
         "headers": {
             "x-rapidapi-host": "newscatcher.p.rapidapi.com",
@@ -136,16 +145,45 @@ function searchTopic(){
         }
     }
     
-    $.ajax(settings).done(function (response) {
+    $.ajax(settings).then(function (response) {
+        
         console.log(response);
+        
+        var articles = response.articles;
+        console.log("Articles length : "+articles.length);
+
+        var title, link, summary;
+        for(var i = 0 ; i < articles.length ; i++){
+
+            title = response.articles[i].title;
+            link = response.articles[i].link;
+            summary = response.articles[i].summary;
+
+            var newsCard = $("<div>").addClass("ui fluid card violet");
+            var content = $("<div>").addClass("content");
+
+            var headlines = $("<a>").addClass("header").text(title);
+            headlines.attr("href",link);
+            headlines.attr("target",'_blank');
+            
+            var description = $("<div>").addClass("description").text(summary);
+
+            content.append(headlines);
+            content.append(description);
+            newsCard.append(content);    
+                
+            $("#newsDiv").append(newsCard);
+        }
+
     });
 }
+
+$("#search-topic-button").on("click",searchTopic);
 
 $(document).ready(function(){
 
     fetchLocationFromIPGeolocationAPI();  
     getNewsAPI();
-
 });
 
 
