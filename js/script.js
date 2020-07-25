@@ -74,10 +74,11 @@ function loadUsersWeatherData(latitude,longitude){
 
 
 
-function getNewsAPI(){
+function getNewsAPI(inputTopic){
 
-    var country = "us";
-    var topic = "tech";
+    var country = "us";//hard code for now
+    var topic = inputTopic;
+    //var topic = "tech";
 
     
         var settings = {
@@ -94,7 +95,7 @@ function getNewsAPI(){
         $.ajax(settings).then(function(response) {
 
             for(var i = 0; i < 10; i++){
-                var newsDiv = $("<div>").addClass("ui card violet");
+                var newsDiv = $("<div>").addClass("ui fluid card violet");
                     newsDiv.css("margin-left","20px");
 
                 var title = response.articles[i].title;
