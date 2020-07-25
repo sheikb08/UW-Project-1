@@ -1,43 +1,125 @@
 <!DOCTYPE html>
 <html lang="en">
+
+<head>
     
-    <head>
-        <meta charset="UTF-8" />
+    <meta charset="UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+    <!-- Sematic ui css -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+
+    <!-- Font CSS -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" />
+
+    <link href="https://fonts.googleapis.com/css2?family=Bungee+Shade&display=swap" rel="stylesheet">
+
+    <link href="style.css" rel="stylesheet">
+
+    <title>Newsletter made EZ</title>
+
+</head>
+
+<body>
+        <div class="row">
+            <div class="ui sizer segment">
+              <div class="eight wide column">
+                <div class="ui huge header">Newsletter Made EZ <i class="newspaper icon"></i> </div>    
+        </div>
+        <!-- We cabn use any of tree -->
+        <!-- <div class="item">
+            <div class="ui icon input">
+            <input type="text" placeholder="Search...">
+            <i class="search link icon"></i>
+            </div>
+        </div>  -->
+        <!-- <div class="ui action input">
+            <input type="text" placeholder="Search for topic...">
+            <button class="ui icon button">
+              <i class="search icon"></i>
+            </button>
+        </div> -->
+      <p>
+          <div class="field">
+                    <div class="ui search">
+                        <div class="ui icon input">
+                            <input class="prompt" type="text" placeholder="Search topic...">
+                            <i class="search icon"></i>
+                        </div>
+                    </div>
+              </div>
+          </div> 
+     <p>
+    <div class="ui grid">
+        <div class="row">
+            <div class="three wide column">
+                <div class="ui vertical pointing menu fluid">
+                    <a class="active item">
+                      News
+                    </a>
+                    <a class="item">
+                      Local News
+                    </a>
+                    <a class="item">
+                      Business
+                    </a>
+                    <a class="item">
+                      Entertainment
+                    </a>
+                    <a class="item">
+                      Health
+                    </a>
+                    <a class="item">
+                      Science
+                    </a>
+                    <a class="item">
+                      Sports
+                    </a>
+                    <a class="item">
+                      Technology
+                    </a>
+                  </div>
+            </div>
+            
+          <div class="ten wide column">
+                
+                
+                <!-- <i class="newspaper outline icon"></i> -->
+            
+                <!--div ho hold our news here -->
+                <div id = "newsDiv">
+                  
+                </div>
+
+            </div>
+            
+          <div class="three wide column">
+                
+                <!-- This is weather part -->
+                <div id = "weatherinfo"></div>
+                
+
+           </div>
+            
+        </div>
+        <footer>
+            <p>2020 Best Group Ever &copy;<br>
+            <a href="mailto:group3@example.com">group3@example.com</a></p>
+        </footer>  
+
+    <!-- Moment.js file -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
         
-        <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0" /> -->
-        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-        
-        <!-- Sematic ui css -->
-        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
-
-        <!-- Font CSS -->
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous"/>
-        
-        <!-- css file -->
-        <!-- <link rel="stylesheet" href="assets/css/style.css" /> -->
-        
-        <title>Newsletter</title>
-    </head>
-
-    <body>
-
-
-        <div id = "weatherinfo"></div>
-
-
-
-
-
-        <!-- Moment.js file -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
-        
-        <!-- jQuery js -->
-        <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
-        
-        <!-- Sematic ui js -->
-        <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
-        
-        <!-- Link to project javascript file -->
-        <script src="js/script.js"></script>
-    </body>
+    <!-- jQuery js -->
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+     
+    <!-- Sematic ui js -->
+    <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+     
+    <!-- Link to project javascript file -->
+    <script src="js/script.js"></script>
+  </body>
 </html>
