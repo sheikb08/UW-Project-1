@@ -1,30 +1,31 @@
-/*Keyword or phrase. Eg: find all articles containing the word 'Microsoft'.
-Date published. Eg: find all articles published yesterday.
-Source name. Eg: find all articles by 'TechCrunch'.
-Source domain name. Eg: find all articles published on thenextweb.com.
-Language. Eg: find all articles written in English.*/
+
 
 function getNewsAPI(){
 
     var country = "us";
-    var category = "general";
-    const apikey = "7e161d7be5ac4ab3a6b3b9cfd6f2de8b";
+    var topic = "tech";
 
-    var queryURL = "https://newsapi.org/v2/top-headlines?country=" + country + "&category=" +category + "&apiKey="+ apikey;
-        console.log("in use query " + queryURL);
-
-        $.ajax({
-        url: queryURL,
-        method: "GET"
-        }).then(function(response) {
+    
+        var settings = {
+            "async": true,
+            "crossDomain": true,
+            "url": "https://newscatcher.p.rapidapi.com/v1/latest_headlines?topic="+ topic+"&lang=en&country="+country+"&media=True",
+            "method": "GET",
+            "headers": {
+                "x-rapidapi-host": "newscatcher.p.rapidapi.com",
+                "x-rapidapi-key": "d50bb86e14msh20481094a932c3bp157a8fjsn33cf930ef98d"
+            }
+        }
+        console.log("in use query " + settings);
+        $.ajax(settings).then(function(response) {
 
             for(var i = 0; i < 10; i++){
                 var newsDiv = $("<div>").addClass("ui card violet");
                     newsDiv.css("margin-left","20px");
 
                 var title = response.articles[i].title;
-                var description = response.articles[i].description;
-                var newsURL = response.articles[i].url;
+                var description = response.articles[i].summary;
+                var newsURL = response.articles[i].link;
                 var blockContainer = $("<div>").addClass("content");
                 console.log("the title is "+title);
 
