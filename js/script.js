@@ -1,5 +1,4 @@
 
-
 // function for fetching User's location from IP address
 function fetchLocationFromIPGeolocationAPI(){
 
@@ -124,6 +123,23 @@ function getNewsAPI(inputTopic){
         });
 }
 
+function searchTopic(){
+
+    var settings = {
+        "async": true,
+        "crossDomain": true,
+        "url": "https://newscatcher.p.rapidapi.com/v1/search?media=True&sort_by=relevancy&lang=en&page=1&q=Elon%20Musk",
+        "method": "GET",
+        "headers": {
+            "x-rapidapi-host": "newscatcher.p.rapidapi.com",
+            "x-rapidapi-key": "2648d73644msh7de7f86cd3d47e9p11ae73jsn7736e63b5ea1"
+        }
+    }
+    
+    $.ajax(settings).done(function (response) {
+        console.log(response);
+    });
+}
 
 $(document).ready(function(){
 
@@ -131,3 +147,6 @@ $(document).ready(function(){
     getNewsAPI();
 
 });
+
+
+
