@@ -125,11 +125,12 @@ function getNewsAPI(inputTopic){
 
 function factCheckedNews(){
     
+    console.log("fact check function is called");
 
     var settings = {
         "async": true,
         "crossDomain": true,
-        "url": "https://api-hoaxy.p.rapidapi.com/top-articles?most_recent=false&exclude_tags=%255B%2522satire%2522%255D",
+        "url": "https://api-hoaxy.p.rapidapi.com/top-articles?most_recent=false",
         "method": "GET",
         "headers": {
             "x-rapidapi-host": "api-hoaxy.p.rapidapi.com",
@@ -138,7 +139,44 @@ function factCheckedNews(){
     }
     
     $.ajax(settings).done(function (response) {
-        console.log(response);
+        var articleArray = response.articles;
+        console.log("the length is "+ articleArray.length);
+        for(var i = 0; i < articleArray.length; i++ ){
+            var siteType = response.articles[i].site_type;
+            //console.log(typeof siteType);
+            if (siteType === "claim"){
+                console.log("no fact checked news");
+            }
+            else if(siteType === "fact_checking"){
+                console.log("we got some fact checked news");
+                var fcNewsDiv = $("<div>").addClass("ui fluid card violet");
+                fcNewsDiv.css("margin-left","20px");
+
+                var fcTitle = response.articles[i].title;
+                var fcNewsURL = response.articles[i].canonical_url;
+                var str = response.articles[i].date_captured;
+                var capDate = str.substring(0,10);
+                var tweetNum = response.articles[i].number_of_tweets;
+                var blockContainer = $("<div>").addClass("content");
+                //console.log(typeof capDate);
+
+
+
+                var fcHeadlines = $("<a>").addClass("header").text(fcTitle);
+                    fcHeadlines.attr("href",fcNewsURL);
+                    fcHeadlines.attr( "target",'_blank');
+                var capturedDate = $("<div>").addClass("capturedDate").text("This news has been captured on : "+capDate);
+                var tweetedTime = $("<div>").addClass("tweetTime").text("This news has been tweeted: "+tweetNum +"times.");
+
+                blockContainer.append(fcHeadlines);
+                blockContainer.append(capturedDate);
+                blockContainer.append(tweetedTime);
+                fcNewsDiv.append(blockContainer);    
+                    
+                $("#newsDiv").append(fcNewsDiv);
+                i++;
+            }
+        }
     });
 
 }
