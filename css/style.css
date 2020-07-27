@@ -1,67 +1,42 @@
+body {
+
+  background-image: url('https://uhdwallpapers.org/uploads/converted/19/02/24/os-galaxy-s10-1920x1200_949745-mm-90.jpg');
+  font-family: 'Roboto', sans-serif;
+}
+
 .ui.huge.header {
-    font-family: 'Bungee Shade', cursive;
-    color: #c1F6ed;
-    font-size: xx-large;
-    content:"";
-  
+    
+  font-family: 'Bungee Shade', cursive;
+  color: #c1F6ed;
+  font-size: xx-large; 
 }
 
 .ui.sizer.segment {
   background-color: transparent;
 }
 
-.item {
-    font-family: 'Courier New', Courier, monospace;
-}
-body {
-  position: relative; 
-  height: 100vh;
-  width: 100%;
-  background-image: url('https://uhdwallpapers.org/uploads/converted/19/02/24/os-galaxy-s10-1920x1200_949745-mm-90.jpg');
-  background-size: cover;
-}
-
-body::before {
-  content: "";
-  position: absolute;
-  top: 0px;
-  right: 0px;
-  bottom: 0px;
-  left: 0px;
-  background-color: rgba(0,0,0,0.70);
-}
-
-
 .ui.grid {
     font-family: 'Courier New', Courier, monospace;
 }
 
-.column {
-    float: left;
-  }
-  
-  .left, .right {
-    width: 25%;
-  }
-  
-  .middle {
-    width: 50%;
-  }
+.headline{
+  color: dodgerblue !important;
+}
 
-  .ui.vertical.pointing.menu.fluid {
-    background-color:#2eaf7d;
-  
+.headline:hover{
+  color:blue !important;
+}
 
-  }
+.headline:visited{
+  color:mediumorchid !important;
+}
 
-  footer {
-    border-top:solid #2EAF7D 2px;
-        width:100%;
-    margin:8% auto;
-    text-align: center;
-          }
+footer {
   
-  .ui.search {
-            float: right;
-          }
+  border-top:solid darkgreen 5px !important;
+  background-color: honeydew !important;
+  margin-bottom: 0px !important;
+
+}
+  
         
