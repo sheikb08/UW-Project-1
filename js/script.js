@@ -62,7 +62,7 @@ function loadUsersWeatherData(latitude,longitude){
         var dateDiv = $("<div>").addClass("header").text(date);
         var weather = $("<div>").addClass("header");
 
-        var temp = $("<div>").addClass("description").text(tempF.toFixed(2)+" °F");
+        var temp = $("<div>").addClass("description").html("<h4>"+tempF.toFixed(2)+" °F</h4>");
 
         weather.append(locationIcon,cityName,imageIcon);
         content.append(dateDiv,weather,temp);
@@ -92,29 +92,31 @@ function getNewsAPI(inputTopic){
         }
         console.log("Newscatcher API query :" + settings);
   
-        var title, description, newsURL;
+        var title, description, newsURL, date;
         
         $.ajax(settings).then(function(response) {
 
             for(var i = 0; i < 10; i++){
                 
                 var newsDiv = $("<div>").addClass("ui fluid card violet");
-                    newsDiv.css("margin-left","20px");
 
                  title = response.articles[i].title;
                  description = response.articles[i].summary;
                  newsURL = response.articles[i].link;
+                 date = (response.articles[i].published_date).substring(0,10);
                 
                  var blockContainer = $("<div>").addClass("content");
      
-                 var headlines = $("<a>").addClass("header").text(title);
+                 var headlines = $("<a>").addClass("header headline").text(title);
                      headlines.attr("href",newsURL);
                      headlines.attr( "target",'_blank');
                  
                 var description = $("<div>").addClass("description").text(description);
-                
+                var publishDate = $("<div>").addClass("description").html("<h4>Published Date : "+date+"</h4>");
+
                 blockContainer.append(headlines);
                 blockContainer.append(description);
+                blockContainer.append(publishDate);
                 newsDiv.append(blockContainer);    
                     
                 $("#newsDiv").append(newsDiv);
@@ -126,9 +128,10 @@ function getNewsAPI(inputTopic){
 function searchTopic(){
 
     $("#newsDiv").empty();
-    
+    $(".active").removeClass("active");
     var topic = $("#search-topic-input").val().trim();
 
+    $("#headline-type").html('<div class="ui fluid card violet"><div class="content"><div class="ui purple header"><h2><i class="newspaper outline icon"></i> Search Results for '+topic+' :</h2></div></div></div>');  
     if(topic === ""){
         return;
     }
@@ -148,30 +151,35 @@ function searchTopic(){
        
         var articles = response.articles;
 
-        var title, link, summary;
+        var title, link, summary,date;
         
         for(var i = 0 ; i < articles.length ; i++){
 
             title = response.articles[i].title;
             link = response.articles[i].link;
             summary = response.articles[i].summary;
+            date = (response.articles[i].published_date).substring(0,10);
 
             var newsCard = $("<div>").addClass("ui fluid card violet");
             var content = $("<div>").addClass("content");
 
-            var headlines = $("<a>").addClass("header").text(title);
+            var headlines = $("<a>").addClass("header headline").text(title);
             headlines.attr("href",link);
             headlines.attr("target",'_blank');
             
             var description = $("<div>").addClass("description").text(summary);
 
+            var publishedDate = $("<div>").addClass("description").html("<h4>Published Date : "+date+"</h4>");
+
             content.append(headlines);
             content.append(description);
+            content.append(publishedDate);
             newsCard.append(content);    
                 
             $("#newsDiv").append(newsCard);
+            
         }
-
+        $("#search-topic-input").val(" ");
     });
 }
 
@@ -189,7 +197,7 @@ function factCheckedNews(){
         }
     }
     
-    $.ajax(settings).done(function (response) {
+    $.ajax(settings).then(function (response) {
         
         var articleArray = response.articles;
         
@@ -199,13 +207,9 @@ function factCheckedNews(){
             
             siteType = response.articles[i].site_type;
             
-            if (siteType === "claim"){
-                console.log("no fact checked news");
-            }
-            else if(siteType === "fact_checking"){
+            if(siteType === "fact_checking"){
            
                 var fcNewsDiv = $("<div>").addClass("ui fluid card violet");
-                fcNewsDiv.css("margin-left","20px");
 
                  fcTitle = response.articles[i].title;
                  fcNewsURL = response.articles[i].canonical_url;
@@ -215,13 +219,13 @@ function factCheckedNews(){
                  
                 var blockContainer = $("<div>").addClass("content");
             
-                var fcHeadlines = $("<a>").addClass("header").text(fcTitle);
+                var fcHeadlines = $("<a>").addClass("header headline").text(fcTitle);
                     fcHeadlines.attr("href",fcNewsURL);
                     fcHeadlines.attr( "target",'_blank');
                 
-                var capturedDate = $("<div>").addClass("capturedDate").text("This news has been captured on : "+capDate);
+                var capturedDate = $("<div>").addClass("capturedDate").html("Captured Date : "+capDate);
                 
-                var tweetedTime = $("<div>").addClass("tweetTime").text("This news has been tweeted: "+tweetNum +"times.");
+                var tweetedTime = $("<div>").addClass("tweetTime").text("Tweet Count : "+tweetNum);
 
                 blockContainer.append(fcHeadlines);
                 blockContainer.append(capturedDate);
@@ -238,37 +242,48 @@ function factCheckedNews(){
 }
 
 function clearNewsBlock(){
-    
-    console.log("clearing newsDiv");
+
     $("#newsDiv").empty();
 }
 
-
+//Search topic 
 $("#search-topic-button").on("click",searchTopic);
 
+// On page load 
 $(document).ready(function(){
 
+    // called function to fetch user's location and load current weather of user's location
     fetchLocationFromIPGeolocationAPI();  
   
     var passingTopic = "world";
     getNewsAPI(passingTopic);//news to display when user first open the page
 
+    $("#headline-type").html('<div class="ui fluid card violet"><div class="content"><div class="ui purple header"><h2><i class="newspaper outline icon"></i> World :</h2></div></div></div>');  
+
+    //When clicked on menu item
     $(document).on("click", ".item", function(event){
         
         clearNewsBlock();
         
         var inputTopic = $(this).attr("data-category");
-        
+        var newsType = $(this).text().trim();
+          
         console.log("inputTopic is "+ inputTopic);
             
             if(inputTopic !== "factChecked"){
                 
-                getNewsAPI(inputTopic);   
+                $(".active").removeClass("active");
+                $(this).addClass("active");
+                getNewsAPI(inputTopic); 
+                $("#headline-type").html('<div class="ui fluid card violet"><div class="content"><div class="ui purple header"><h2><i class="newspaper outline icon"></i> '+newsType+' :</h2></div></div></div>');  
+                
             }
             else if(inputTopic === "factChecked"){
-                
+                $(".active").removeClass("active");
+                $(this).addClass("active");
                 factCheckedNews();
+                $("#headline-type").html('<div class="ui fluid card violet"><div class="content"><div class="ui purple header"><h2><i class="newspaper outline icon"></i> '+newsType+' :</h2></div></div></div>');  
             }
-     });
 
-
+    });
+});

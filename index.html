@@ -17,6 +17,8 @@
 
     <link href="https://fonts.googleapis.com/css2?family=Bungee+Shade&display=swap" rel="stylesheet">
 
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+
     <link href="css/style.css" rel="stylesheet">
 
     <title>Newsletter made EZ</title>
@@ -24,7 +26,7 @@
 </head>
 
 <body>
-    <div class="ui center aligned sizer segment">
+    <div class="ui center aligned sizer segment title">
         <div class="ui huge header">Newsletter</div>   
     </div>
     
@@ -34,7 +36,7 @@
             
             <input type="text" placeholder="Search for topic..." id="search-topic-input">
             
-            <button class="ui icon button" type="submit" id="search-topic-button">
+            <button class="ui icon blue button" type="submit" id="search-topic-button">
               <i class="search icon"></i>
             </button>
             
@@ -42,45 +44,47 @@
     
     </div>
 
-    <div class="ui grid">
+    <div class="ui stackable grid">
         <div class="row">
             <div class="three wide column">
                 <div class="ui vertical pointing menu fluid" id="category-menu">
                     <a class="active item" data-category="world">
-                      World
+                      <strong>World</strong> 
                     </a>
                     <a class="item" data-category="politics">
-                      Politics
+                      <strong>Politics</strong> 
                     </a>
                     <a class="item" data-category="business">
-                      Business
+                      <strong>Business</strong> 
                     </a>
                     <a class="item" data-category="entertainment">
-                      Entertainment
+                      <strong>Entertainment</strong> 
                     </a>
                     <a class="item" data-category="finance">
-                      Finance
+                      <strong>Finance</strong> 
                     </a>
                     <a class="item" data-category="economics">
-                      Economics
+                      <strong>Economics</strong> 
                     </a>
                     <a class="item" data-category="sport">
-                      Sports
+                      <strong>Sports</strong> 
                     </a>
                     <a class="item" data-category="tech">
-                      Technology
+                      <strong>Technology</strong> 
                     </a>
                     <a class="item" data-category="factChecked">
-                      Fact checked
+                      <strong>Fact Check</strong>
                     </a>
                   </div>
             </div>
             
           <div class="ten wide column">
+                 
+                <!-- div to hold headline type -->
+                <div id = "headline-type"></div>
+
+                <br>
                 
-                
-                <!-- <i class="newspaper outline icon"></i> -->
-            
                 <!--div ho hold our news here -->
                 <div id = "newsDiv">
                   
@@ -97,10 +101,13 @@
             
         </div>
     </div>   
-        <footer>
-            <p>2020 Best Group Ever &copy;<br>
-            <a href="mailto:group3@example.com">group3@example.com</a></p>
-        </footer>         
+    <br>    
+    <footer class="ui center aligned sizer segment">
+
+        <strong><span>&copy; Copyright</span></strong>
+        <p>Project by Brandon, Pechanda, Jason & Gauri<br>
+
+    </footer>             
 
     <!-- Moment.js file -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
