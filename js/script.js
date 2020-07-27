@@ -1,9 +1,9 @@
 
-
 // function for fetching User's location from IP address
 function fetchLocationFromIPGeolocationAPI(){
 
     var latitude,longitude;
+    
     // IP Geolocation API query
     var ipQueryURL = "http://ip-api.com/json/";
 
@@ -73,13 +73,13 @@ function loadUsersWeatherData(latitude,longitude){
 }
 
 
+//function to retrive news headlines in different categories from NewsCatcher API
 function getNewsAPI(inputTopic){
-    //console.log("i am called and the inputTopic is " + inputTopic);
-    var country = "us";//hardcoded for now
-    var topic = inputTopic;
-    //var topic = "tech";
-
     
+    var country = "us";//hardcoded for now
+    
+    var topic = inputTopic;
+ 
         var settings = {
             "async": true,
             "crossDomain": true,
@@ -90,42 +90,93 @@ function getNewsAPI(inputTopic){
                 "x-rapidapi-key": "d50bb86e14msh20481094a932c3bp157a8fjsn33cf930ef98d"
             }
         }
-        console.log("in use query " + settings);
+        console.log("Newscatcher API query :" + settings);
+  
+        var title, description, newsURL;
+        
         $.ajax(settings).then(function(response) {
 
             for(var i = 0; i < 10; i++){
+                
                 var newsDiv = $("<div>").addClass("ui fluid card violet");
                     newsDiv.css("margin-left","20px");
 
-                var title = response.articles[i].title;
-                var description = response.articles[i].summary;
-                var newsURL = response.articles[i].link;
-                var blockContainer = $("<div>").addClass("content");
-                console.log("the title is "+title);
-
-
-
+                 title = response.articles[i].title;
+                 description = response.articles[i].summary;
+                 newsURL = response.articles[i].link;
+                
+                 var blockContainer = $("<div>").addClass("content");
+     
                  var headlines = $("<a>").addClass("header").text(title);
                      headlines.attr("href",newsURL);
                      headlines.attr( "target",'_blank');
-                 var description = $("<div>").addClass("description").text(description);
-
-
+                 
+                var description = $("<div>").addClass("description").text(description);
                 
                 blockContainer.append(headlines);
                 blockContainer.append(description);
                 newsDiv.append(blockContainer);    
                     
                 $("#newsDiv").append(newsDiv);
-            }
-
-            
+            }            
         });
 }
 
-function factCheckedNews(){
+// function to get news headlines for searched topic in search bar
+function searchTopic(){
+
+    $("#newsDiv").empty();
     
-    console.log("fact check function is called");
+    var topic = $("#search-topic-input").val().trim();
+
+    if(topic === ""){
+        return;
+    }
+  
+     var settings = {
+        "async": true,
+        "crossDomain": true,
+        "url": "https://newscatcher.p.rapidapi.com/v1/search?media=True&sort_by=relevancy&lang=en&page=1&q="+topic,
+        "method": "GET",
+        "headers": {
+            "x-rapidapi-host": "newscatcher.p.rapidapi.com",
+            "x-rapidapi-key": "2648d73644msh7de7f86cd3d47e9p11ae73jsn7736e63b5ea1"
+        }
+    }
+    
+    $.ajax(settings).then(function (response) {
+       
+        var articles = response.articles;
+
+        var title, link, summary;
+        
+        for(var i = 0 ; i < articles.length ; i++){
+
+            title = response.articles[i].title;
+            link = response.articles[i].link;
+            summary = response.articles[i].summary;
+
+            var newsCard = $("<div>").addClass("ui fluid card violet");
+            var content = $("<div>").addClass("content");
+
+            var headlines = $("<a>").addClass("header").text(title);
+            headlines.attr("href",link);
+            headlines.attr("target",'_blank');
+            
+            var description = $("<div>").addClass("description").text(summary);
+
+            content.append(headlines);
+            content.append(description);
+            newsCard.append(content);    
+                
+            $("#newsDiv").append(newsCard);
+        }
+
+    });
+}
+
+// function to get 'Fact Checked' news headlines from hoaxy API
+function factCheckedNews(){
 
     var settings = {
         "async": true,
@@ -139,38 +190,43 @@ function factCheckedNews(){
     }
     
     $.ajax(settings).done(function (response) {
+        
         var articleArray = response.articles;
-        console.log("the length is "+ articleArray.length);
+        
+        var siteType, fcTitle, fcNewsURL, str, capDate, tweetNum;
+        
         for(var i = 0; i < articleArray.length; i++ ){
-            var siteType = response.articles[i].site_type;
-            //console.log(typeof siteType);
+            
+            siteType = response.articles[i].site_type;
+            
             if (siteType === "claim"){
                 console.log("no fact checked news");
             }
             else if(siteType === "fact_checking"){
-                console.log("we got some fact checked news");
+           
                 var fcNewsDiv = $("<div>").addClass("ui fluid card violet");
                 fcNewsDiv.css("margin-left","20px");
 
-                var fcTitle = response.articles[i].title;
-                var fcNewsURL = response.articles[i].canonical_url;
-                var str = response.articles[i].date_captured;
-                var capDate = str.substring(0,10);
-                var tweetNum = response.articles[i].number_of_tweets;
+                 fcTitle = response.articles[i].title;
+                 fcNewsURL = response.articles[i].canonical_url;
+                 str = response.articles[i].date_captured;
+                 capDate = str.substring(0,10);
+                 tweetNum = response.articles[i].number_of_tweets;
+                 
                 var blockContainer = $("<div>").addClass("content");
-                //console.log(typeof capDate);
-
-
-
+            
                 var fcHeadlines = $("<a>").addClass("header").text(fcTitle);
                     fcHeadlines.attr("href",fcNewsURL);
                     fcHeadlines.attr( "target",'_blank');
+                
                 var capturedDate = $("<div>").addClass("capturedDate").text("This news has been captured on : "+capDate);
+                
                 var tweetedTime = $("<div>").addClass("tweetTime").text("This news has been tweeted: "+tweetNum +"times.");
 
                 blockContainer.append(fcHeadlines);
                 blockContainer.append(capturedDate);
                 blockContainer.append(tweetedTime);
+                
                 fcNewsDiv.append(blockContainer);    
                     
                 $("#newsDiv").append(fcNewsDiv);
@@ -182,29 +238,37 @@ function factCheckedNews(){
 }
 
 function clearNewsBlock(){
-    console.log("claering");
+    
+    console.log("clearing newsDiv");
     $("#newsDiv").empty();
 }
 
 
+$("#search-topic-button").on("click",searchTopic);
+
 $(document).ready(function(){
 
     fetchLocationFromIPGeolocationAPI();  
+  
     var passingTopic = "world";
     getNewsAPI(passingTopic);//news to display when user first open the page
 
     $(document).on("click", ".item", function(event){
+        
         clearNewsBlock();
-        console.log("i am clicked");
+        
         var inputTopic = $(this).attr("data-category");
+        
         console.log("inputTopic is "+ inputTopic);
+            
             if(inputTopic !== "factChecked"){
+                
                 getNewsAPI(inputTopic);   
             }
             else if(inputTopic === "factChecked"){
+                
                 factCheckedNews();
             }
-  
-       });
+     });
 
-});
+
