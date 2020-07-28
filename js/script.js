@@ -92,7 +92,7 @@ function getNewsAPI(inputTopic){
         }
         console.log("Newscatcher API query :" + settings);
   
-        var title, description, newsURL, date;
+        var title, summary, newsURL, date;
         
         $.ajax(settings).then(function(response) {
 
@@ -101,7 +101,7 @@ function getNewsAPI(inputTopic){
                 var newsDiv = $("<div>").addClass("ui fluid card violet");
 
                  title = response.articles[i].title;
-                 description = response.articles[i].summary;
+                 summary = response.articles[i].summary;
                  newsURL = response.articles[i].link;
                  date = (response.articles[i].published_date).substring(0,10);
                 
@@ -111,7 +111,7 @@ function getNewsAPI(inputTopic){
                      headlines.attr("href",newsURL);
                      headlines.attr( "target",'_blank');
                  
-                var description = $("<div>").addClass("description").text(description);
+                var description = $("<div>").addClass("description").text(summary);
                 var publishDate = $("<div>").addClass("description").html("<h4>Published Date : "+date+"</h4>");
 
                 blockContainer.append(headlines);
@@ -125,8 +125,9 @@ function getNewsAPI(inputTopic){
 }
 
 // function to get news headlines for searched topic in search bar
-function searchTopic(){
+function searchTopic(event){
 
+    event.preventDefault();
     $("#newsDiv").empty();
     $(".active").removeClass("active");
     var topic = $("#search-topic-input").val().trim();
@@ -176,11 +177,11 @@ function searchTopic(){
             content.append(publishedDate);
             newsCard.append(content);    
                 
-            $("#newsDiv").append(newsCard);
-            
+            $("#newsDiv").append(newsCard);        
+
         }
         $("#search-topic-input").val(" ");
-    });
+    }); 
 }
 
 // function to get 'Fact Checked' news headlines from hoaxy API
