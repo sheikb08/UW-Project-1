@@ -5,7 +5,7 @@ function fetchLocationFromIPGeolocationAPI(){
     var latitude,longitude;
     
     // IP Geolocation API query
-    var ipQueryURL = "http://ip-api.com/json/";
+    var ipQueryURL = "https://freegeoip.app/json/";
 
     $.ajax({
         
@@ -16,8 +16,8 @@ function fetchLocationFromIPGeolocationAPI(){
       
         console.log("IPQueryURL : "+ipQueryURL);   
         
-        latitude = response.lat;
-        longitude = response.lon;
+        latitude = response.latitude;
+        longitude = response.longitude;
         
         //function called to load user's locations weather data
         loadUsersWeatherData(latitude,longitude);
