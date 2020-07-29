@@ -37,9 +37,9 @@ To provide users with an all-in-one experience to retrieve top stories in differ
 * Data is available in JSON, XML, or HTML format.
 * We used this API to fetch user's locations current weather data by using latitude and longitude obtained from IP Geolocation API. 
 
-**4. [IP Geolocation API](https://ip-api.com/)** : 
+**4. [IP Geolocation API](https://freegeoip.app/)** : 
 
-* Gives User's location related data based on User's IP address. 
+* Gives User's location related data based on User's IP address. It uses a database of IP addresses that are associated to cities along with other relevant information like time zone, latitude and longitude.
 * We have used this API to fetch user's location and get latitude and longitude.
 
 # Tech/Frameworks Used : 
