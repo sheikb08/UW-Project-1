@@ -203,15 +203,28 @@ function factCheckedNews(){
         var articleArray = response.articles;
         
         var siteType, fcTitle, fcNewsURL, str, capDate, tweetNum;
+        var counter = 0;
         
+        var fcNewsDiv = $("<div>").addClass("ui fluid card violet");
+
+        var factCheckTitle = $("<h2>").addClass("ui purple header").html("<i class='newspaper outline icon'></i>Fact Check :");
+
+        var factCheckContent = $("<div>").addClass("content");
+
+        factCheckContent.append(factCheckTitle);
+        fcNewsDiv.append(factCheckContent); 
+
         for(var i = 0; i < articleArray.length; i++ ){
             
             siteType = response.articles[i].site_type;
             
             if(siteType === "fact_checking"){
            
-                var fcNewsDiv = $("<div>").addClass("ui fluid card violet");
-
+                if(counter === 5){
+                    break;
+                }
+                counter++;
+                
                  fcTitle = response.articles[i].title;
                  fcNewsURL = response.articles[i].canonical_url;
                  str = response.articles[i].date_captured;
@@ -234,10 +247,9 @@ function factCheckedNews(){
                 
                 fcNewsDiv.append(blockContainer);    
                     
-                $("#newsDiv").append(fcNewsDiv);
-                i++;
             }
         }
+        $("#factCheckInfo").append(fcNewsDiv);
     });
 
 }
@@ -255,7 +267,7 @@ $(document).ready(function(){
 
     // called function to fetch user's location and load current weather of user's location
     fetchLocationFromIPGeolocationAPI();  
-  
+    factCheckedNews();
     var passingTopic = "world";
     getNewsAPI(passingTopic);//news to display when user first open the page
 
@@ -270,21 +282,12 @@ $(document).ready(function(){
         var newsType = $(this).text().trim();
           
         console.log("inputTopic is "+ inputTopic);
-            
-            if(inputTopic !== "factChecked"){
-                
-                $(".active").removeClass("active");
-                $(this).addClass("active");
-                getNewsAPI(inputTopic); 
-                $("#headline-type").html('<div class="ui fluid card violet"><div class="content"><div class="ui purple header"><h2><i class="newspaper outline icon"></i> '+newsType+' :</h2></div></div></div>');  
-                
-            }
-            else if(inputTopic === "factChecked"){
-                $(".active").removeClass("active");
-                $(this).addClass("active");
-                factCheckedNews();
-                $("#headline-type").html('<div class="ui fluid card violet"><div class="content"><div class="ui purple header"><h2><i class="newspaper outline icon"></i> '+newsType+' :</h2></div></div></div>');  
-            }
-
+  
+        $("#headline-type").html('<div class="ui fluid card violet"><div class="content"><div class="ui purple header"><h2><i class="newspaper outline icon"></i> '+newsType+' :</h2></div></div></div>');          
+        $(".active").removeClass("active");
+        $(this).addClass("active");
+        getNewsAPI(inputTopic); 
+        
+ 
     });
 });
