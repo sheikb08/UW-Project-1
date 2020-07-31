@@ -6,13 +6,17 @@ Build Newsletter application using **NewsCatcher API**, **Hoaxy API**, **IP Geol
 
 # Motivation : 
 
-To provide users with an all-in-one experience to retrieve top stories in different categories within country, fact check news and weather information from the user’s location. We want to empower the user by giving them the freedom to search news about specific topic.
+To provide users with an all-in-one experience to retrieve top stories in different categories within country, fact check news and weather information from the user’s location. User can also search news articles for specific topic.
 
 # ScreenShots : 
 
+|Medium Devices/ Laptop|Small Devices/ Tablet|Extra Small Devices/Phone
+|--|--|--
+|![Laptop](images/laptop.png)|![Tablet](images/tablet.png)|![Phone](images/phone.png)
+
 # Demo : 
 
-![Newsletter]()
+![Newsletter](images/newsletter.gif)
 
 # APIs Used : 
 
