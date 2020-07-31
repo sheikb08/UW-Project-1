@@ -29,7 +29,7 @@
   width: 100%;
   color: white;
   line-height: 65px;
-  padding-left: 30px;
+  padding-left: 15px;
   box-sizing: border-box;
   border-bottom: 1px solid black;
   border-top: 1px solid rgba(255,255,255,.1);
@@ -310,7 +310,12 @@ nav .logo.space{
 @media (max-width: 980px){
   nav .menu-icon,
   nav .cancel-icon,
-  nav .search-icon{
+  nav .search-icon
+  
+
+  
+  {
+    
     margin: 0 20px;
   }
   nav form{
