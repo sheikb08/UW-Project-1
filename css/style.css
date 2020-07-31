@@ -1,3 +1,5 @@
+
+
 @import url('https://fonts.googleapis.com/css?family=Montserrat:600|Open+Sans:600&display=swap');
 *{
   margin: 0;
@@ -36,8 +38,8 @@
   transition: all .5s ease;
 }
 a.active,a:hover{
-  border-left: 5px solid #b93632;
-  color: #b93632;
+  border-left: 5px solid #6d0c85;
+  color: #6d0c85;
 }
 .sidebar a i{
   font-size: 23px;
@@ -124,6 +126,8 @@ label #cancel{
   font-family: 'Montserrat', sans-serif;
 }
 body{
+  
+  background-image: url('pexels-lisa-fotios-1369476.jpg');
   background: #f2f2f2;
 }
 nav{
@@ -295,21 +299,7 @@ nav .search-icon{
     display: block;
   }
 }
-.content{
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  text-align: center;
-  transform: translate(-50%, -50%);
-}
-.content header{
-  font-size: 30px;
-  font-weight: 700;
-}
-.content .text{
-  font-size: 30px;
-  font-weight: 700;
-}
+
 .space{
   margin: 10px 0;
 }
@@ -335,21 +325,53 @@ nav .logo.space{
     font-size: 16px;
   }
 }
-.content{
+
+.three.wide.column{
+  top: 10px;
+  left: 20px;
+
+}
+
+.four.wide.column{
+  right: 10px;
+  
+}
+
+.ui.center.aligned.sizer.segment{
+  bottom: 0px;
+  background-color: black;
+  color: white;
+}
+
+.ui.center.aligned.sizer.segment.title{
+padding: 200px;
+background-image: url('phonedesk.jpg');
+background-color: #cccccc;
+  height: 500px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  margin: 0em;
+
+}
+
+.ui.huge.header{
+  text-align: center;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-}
-.content header{
-  font-size: 30px;
-  font-weight: 700;
-}
-.content .text{
-  font-size: 30px;
-  font-weight: 700;
-}
-.content .space{
-  margin: 10px 0;
+  color: white;
+  font-size: 90px;
 }
 
+.nine.wide.column{
+  background-color: rgb(224, 207, 185);
+}
+
+
+.ui.center.aligned.basic.segment{
+  background-color: rgb(154, 197, 133);
+  margin: 0em;
+}
