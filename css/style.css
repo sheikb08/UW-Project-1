@@ -306,12 +306,13 @@ nav .logo.space{
 
 .three.wide.column{
   top: 10px;
-  left: 20px;
+  left: 10px;
 
 }
 
 .four.wide.column{
   right: 10px;
+  top: 10px;
   
 }
 
