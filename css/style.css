@@ -6,30 +6,15 @@
   padding: 0;
   text-decoration: none;
 }
-.sidebar{
-  position: fixed;
-  width: 240px;
-  left: -240px;
-  height: 100%;
-  background: #1e1e1e;
-  transition: all .5s ease;
-}
-.sidebar header{
-  font-size: 28px;
-  color: white;
-  line-height: 70px;
-  text-align: center;
-  background: #1b1b1b;
-  user-select: none;
-  font-family: 'Montserrat', sans-serif;
-}
+
+
 .sidebar a{
   display: block;
   height: 65px;
   width: 100%;
   color: white;
   line-height: 65px;
-  padding-left: 15px;
+  padding-left: 30px;
   box-sizing: border-box;
   border-bottom: 1px solid black;
   border-top: 1px solid rgba(255,255,255,.1);
@@ -91,15 +76,8 @@ label #cancel{
     left: 0;
     margin: 100px 0;
   }
-  header,#btn,#cancel{
-    display: none;
-  }
-  span{
-    position: absolute;
-    margin-left: 23px;
-    opacity: 0;
-    visibility: hidden;
-  }
+  
+  
   .sidebar a{
     height: 60px;
   }
@@ -310,12 +288,7 @@ nav .logo.space{
 @media (max-width: 980px){
   nav .menu-icon,
   nav .cancel-icon,
-  nav .search-icon
-  
-
-  
-  {
-    
+  nav .search-icon{
     margin: 0 20px;
   }
   nav form{
@@ -359,22 +332,9 @@ background-color: #cccccc;
   position: relative;
   margin: 0em;
 
-
 }
 
 @media screen and (min-width: 601px) {
-.ui.huge.header{
-  text-align: center;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: white;
-  font-size: 90px;
-}
-}
-
-@media screen and (max-width: 600px) {
   .ui.huge.header{
     text-align: center;
     position: absolute;
@@ -382,17 +342,29 @@ background-color: #cccccc;
     left: 50%;
     transform: translate(-50%, -50%);
     color: white;
-    font-size: 60px;
+    font-size: 90px;
   }
   }
-
-
-.nine.wide.column{
-  background-color: rgb(224, 207, 185);
-}
-
-
-.ui.center.aligned.basic.segment{
-  background-color: rgb(154, 197, 133);
-  margin: 0em;
-}
+  
+  @media screen and (max-width: 600px) {
+    .ui.huge.header{
+      text-align: center;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: white;
+      font-size: 60px;
+    }
+    }
+  
+  
+  .nine.wide.column{
+    background-color: rgb(224, 207, 185);
+  }
+  
+  
+  .ui.center.aligned.basic.segment{
+    background-color: rgb(154, 197, 133);
+    margin: 0em;
+  }
