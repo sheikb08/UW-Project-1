@@ -88,9 +88,9 @@ To provide users with an all-in-one experience to retrieve top stories in differ
 
 # Collaborators : 
 
-* [Gauri Khandke](https://github.com/GauriKhandke)
-* [Jason Kwong](https://github.com/saikitjk)
 * [Brandon Johnson](https://github.com/sheikb08)
+* [Jason Kwong](https://github.com/saikitjk)
+* [Gauri Khandke](https://github.com/GauriKhandke)
 * [Pechanda Von](https://github.com/pechandav)
 
 # Deployed Website : 
