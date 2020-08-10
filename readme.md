@@ -12,11 +12,11 @@ To provide users with an all-in-one experience to retrieve top stories in differ
 
 |Medium Devices/ Laptop|Small Devices/ Tablet|Extra Small Devices/Phone
 |--|--|--
-|![Laptop](images/laptop-img.png)|![Tablet](images/tab.png)|![Mobile](images/mobile.png)
+|![Laptop](laptop-img.png)|![Tablet](tab.png)|![Mobile](mobile.png)
 
 # Demo : 
 
-![Newsletter](images/newsletter-made-ez.gif)
+![Newsletter](newsletter-made-ez.gif)
 
 # APIs Used : 
 
