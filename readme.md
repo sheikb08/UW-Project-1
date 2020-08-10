@@ -16,7 +16,7 @@ To provide users with an all-in-one experience to retrieve top stories in differ
 
 # Demo : 
 
-![Newsletter](newsletter-made-ez.gif)
+![Newsletter](Newslettermadeez2.gif)
 
 # APIs Used : 
 
